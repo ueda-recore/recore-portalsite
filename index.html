@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RECORE Community | リユース業界の成長の生態系</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green-dark: #1E3A14;
+      --green-mid: #2D4E1C;
+      --green-card: #1A3212;
+      --gold: #C4D44A;
+      --gold-dim: rgba(196,212,74,0.15);
+      --text: #2C2C2C;
+      --text-sub: #6A6A6A;
+      --bg: #F7F7F2;
+      --surface: #FFFFFF;
+      --border: #DDE0D8;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    /* ===== HEADER / NAV ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .logo {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--green-dark);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .logo-main { color: var(--green-dark); }
+    .logo-sub { color: var(--gold); font-size: 12px; display: block; font-weight: 700; letter-spacing: 0.08em; }
+
+    nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      flex: 1;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 8px 0;
+      transition: color 0.2s;
+    }
+
+    nav button:hover { color: var(--gold); }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--green-dark);
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: #d6e85a;
+      transform: translateY(-2px);
+    }
+
+    /* ===== COMMON ===== */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 96px 24px; }
+
+    .label-en {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .label-en::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 2px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 900;
+      color: var(--green-dark);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .section-sub {
+      color: var(--text-sub);
+      font-size: 16px;
+      margin-bottom: 48px;
+      max-width: 700px;
+      line-height: 1.8;
+    }
+
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
+      color: #fff;
+      padding: 120px 24px;
+      text-align: center;
+    }
+
+    .hero-content { max-width: 900px; margin: 0 auto; }
+
+    .hero-logo {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 24px;
+      opacity: 0.9;
+    }
+
+    .hero-title {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: clamp(32px, 8vw, 56px);
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    .hero-title em { font-style: normal; color: var(--gold); }
+
+    .hero-subtitle {
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: 48px;
+      opacity: 0.9;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 15px 32px;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 8px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.04em;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--green-dark);
+      box-shadow: 0 4px 16px rgba(196, 212, 74, 0.3);
+    }
+
+    .btn-gold:hover {
+      background: #d6e85a;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(196, 212, 74, 0.4);
+    }
+
+    .btn-white {
+      background: #fff;
+      color: var(--green-dark);
+      box-shadow: 0 4px 16px rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-white:hover {
+      background: #f0f0f0;
+      transform: translateY(-2px);
+    }
+
+    /* ===== STATS ===== */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+      margin: 64px 0;
+    }
+
+    .stat-card {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: clamp(36px, 6vw, 48px);
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    .about-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+      margin: 40px 0;
+    }
+
+    .about-content h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 16px;
+      margin-top: 24px;
+    }
+
+    .about-content h3:first-child { margin-top: 0; }
+
+    .about-content p {
+      color: var(--text-sub);
+      line-height: 1.85;
+      margin-bottom: 16px;
+      font-size: 15px;
+    }
+
+    .benefits-list {
+      display: grid;
+      gap: 16px;
+      margin: 32px 0;
+    }
+
+    .benefit-item {
+      background: var(--surface);
+      padding: 20px;
+      border-radius: 8px;
+      border-left: 4px solid var(--gold);
+    }
+
+    .benefit-item strong {
+      color: var(--green-dark);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .benefit-item p {
+      font-size: 14px;
+      color: var(--text-sub);
+      margin: 0;
+    }
+
+    /* ===== VISION GRID ===== */
+    .vision-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 32px;
+      margin: 40px 0;
+    }
+
+    .vision-card {
+      text-align: center;
+      padding: 40px 24px;
+      background: var(--surface);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+
+    .vision-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 32px rgba(30, 58, 20, 0.1);
+      border-color: var(--gold);
+    }
+
+    .vision-card h3 {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--green-dark);
+      margin-bottom: 12px;
+    }
+
+    .vision-card p {
+      color: var(--text-sub);
+      font-size: 14px;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    /* ===== EVENT GRID ===== */
+    .event-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      margin: 40px 0;
+    }
+
+    .event-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .event-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(30, 58, 20, 0.1);
+    }
+
+    .event-header {
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
+      color: #fff;
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    .event-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--green-dark);
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .event-vol {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .event-status {
+      font-size: 12px;
+      opacity: 0.8;
+    }
+
+    .event-body {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .event-body h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 16px;
+    }
+
+    .event-info {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex: 1;
+    }
+
+    .event-info-item {
+      font-size: 14px;
+      color: var(--text-sub);
+    }
+
+    .event-info-label {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .event-desc {
+      font-size: 14px;
+      color: var(--text-sub);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .event-button {
+      margin-top: auto;
+    }
+
+    /* ===== ROADMAP ===== */
+    .roadmap {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      margin: 40px 0;
+    }
+
+    .phase-card {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 24px;
+      position: relative;
+    }
+
+    .phase-card.current {
+      border-color: var(--gold);
+      box-shadow: 0 4px 16px rgba(196, 212, 74, 0.2);
+    }
+
+    .phase-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--green-dark);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .phase-number {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--green-dark);
+      margin-bottom: 8px;
+    }
+
+    .phase-card h3 {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--green-dark);
+      margin-bottom: 8px;
+    }
+
+    .phase-subtitle {
+      color: var(--text-sub);
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .phase-description {
+      color: var(--text-sub);
+      font-size: 14px;
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .phase-items {
+      display: grid;
+      gap: 12px;
+    }
+
+    .phase-item {
+      display: flex;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .phase-item::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ===== REPORT SECTION ===== */
+    .report-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      margin: 40px 0;
+    }
+
+    .report-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .report-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(30, 58, 20, 0.1);
+    }
+
+    .report-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 48px;
+    }
+
+    .report-content {
+      padding: 24px;
+    }
+
+    .report-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--green-dark);
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .report-content h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .report-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 16px 0;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .report-meta-item {
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+
+    .report-meta-label {
+      font-weight: 700;
+      color: var(--text);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .report-desc {
+      font-size: 14px;
+      color: var(--text-sub);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    /* ===== JOIN SECTION ===== */
+    .join-section {
+      background: var(--green-card);
+      color: #fff;
+      padding: 80px 24px;
+      text-align: center;
+    }
+
+    .join-section .label-en { justify-content: center; }
+    .join-section .label-en::before { display: none; }
+
+    .join-section .section-title {
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .join-section .section-sub {
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 600px;
+    }
+
+    .join-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 32px;
+      margin: 64px 0;
+    }
+
+    .join-benefit {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    .join-benefit h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+
+    .join-benefit p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .join-info {
+      max-width: 700px;
+      margin: 64px auto;
+      padding: 32px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+    }
+
+    .join-info h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .join-info-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 24px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .join-info-label {
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #0F1E09;
+      color: rgba(255, 255, 255, 0.4);
+      padding: 48px 24px;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    footer strong { color: rgba(255, 255, 255, 0.7); }
+
+    footer .container {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 24px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      nav {
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      nav-links {
+        flex: 1 0 100%;
+        order: 3;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      section { padding: 56px 20px; }
+      .hero { padding: 80px 20px; }
+
+      .about-section,
+      .stats-grid,
+      .vision-grid,
+      .event-grid,
+      .roadmap,
+      .report-grid,
+      .join-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .report-meta {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn { width: 100%; text-align: center; }
+
+      .join-info-item {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <nav>
+    <a href="#" class="logo">RECORE<span class="logo-sub">Community</span></a>
+    <nav-links>
+      <button onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">コミュニティとは</button>
+      <button onclick="document.getElementById('vision').scrollIntoView({behavior: 'smooth'})">ビジョン</button>
+      <button onclick="document.getElementById('events').scrollIntoView({behavior: 'smooth'})">次回イベント</button>
+      <button onclick="document.getElementById('reports').scrollIntoView({behavior: 'smooth'})">イベントレポート</button>
+      <button onclick="document.getElementById('roadmap').scrollIntoView({behavior: 'smooth'})">ロードマップ</button>
+    </nav-links>
+    <button class="btn-primary" onclick="document.getElementById('join').scrollIntoView({behavior: 'smooth'})">参加する</button>
+  </nav>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-logo fade-in">RECORE COMMUNITY</div>
+    <h1 class="hero-title fade-in">孤独な試行錯誤を<br><em>終わらせる。</em></h1>
+    <p class="hero-subtitle fade-in">RECOREコミュニティは、リユース業界のプロフェッショナルが知見を共有し、共に成長する「成長の生態系」です。</p>
+    <div class="hero-buttons fade-in">
+      <button class="btn btn-gold" onclick="document.getElementById('join').scrollIntoView({behavior: 'smooth'})">コミュニティに参加する</button>
+      <button class="btn btn-white" onclick="document.getElementById('reports').scrollIntoView({behavior: 'smooth'})">イベントレポートを見る</button>
+    </div>
+    <div class="stats-grid fade-in">
+      <div class="stat-card">
+        <div class="stat-number">83%</div>
+        <div class="stat-label">業務効率化実績</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">100+</div>
+        <div class="stat-label">参加企業</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">定期開催</div>
+        <div class="stat-label">全国イベント</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" style="background: var(--surface);">
+  <div class="container">
+    <div class="label-en fade-in">ABOUT</div>
+    <h2 class="section-title fade-in">RECOREコミュニティとは</h2>
+
+    <div class="about-section fade-in">
+      <div class="about-content">
+        <p>RECOREユーザーの横のつながりを作ることで相互作用を生むことを目指しています。リユース業界という特殊な業界の中でしっかり機能するコミュニティには、大きな価値があると考えています。</p>
+
+        <h3>コミュニティで得られるもの</h3>
+        <div class="benefits-list">
+          <div class="benefit-item">
+            <strong>継続的なビジネス成果を創出する土台</strong>
+            <p>相互に学び、アイデアを交換し、ビジネス成長を加速させます。</p>
+          </div>
+          <div class="benefit-item">
+            <strong>他のRECOREユーザーとの情報交換・相談</strong>
+            <p>全国のユーザーと直接つながり、経営課題の解決策を共有できます。</p>
+          </div>
+          <div class="benefit-item">
+            <strong>活用事例・成功事例の共有</strong>
+            <p>RECORE導入企業の成功事例や失敗事例から実践的なノウハウを習得できます。</p>
+          </div>
+          <div class="benefit-item">
+            <strong>業者間取引の斡旋</strong>
+            <p>RECORE導入企業同士での新たなビジネス機会を創出します。</p>
+          </div>
+        </div>
+      </div>
+      <div class="about-content">
+        <h3>基本ルール</h3>
+        <p>株式会社RECOREからの対価は支払われません。他のメンバーが不快になるような営業活動は禁止です。運営メンバーや参加者の負担にならないよう、オフラインでの交流を大切にしています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VISION ===== -->
+<section id="vision" style="background: var(--bg);">
+  <div class="container">
+    <div class="label-en fade-in">VISION</div>
+    <h2 class="section-title fade-in">ビジョン：成長の生態系へ</h2>
+
+    <div class="vision-grid fade-in">
+      <div class="vision-card">
+        <h3>共有</h3>
+        <p>全国各地の知見を集合知化し、ベストプラクティスを民主化します。</p>
+      </div>
+      <div class="vision-card">
+        <h3>解決</h3>
+        <p>実践者同士の議論を通じて、現場で直面する技術や運用の壁を突破します。</p>
+      </div>
+      <div class="vision-card">
+        <h3>共創</h3>
+        <p>現場のリアルな声を反映し、リユース業界の「新しい標準」を共に創り上げます。</p>
+      </div>
+      <div class="vision-card">
+        <h3>信頼</h3>
+        <p>株式会社RECOREからの対価は支払わない。純粋な学びと成長のためのコミュニティです。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NEXT EVENTS ===== -->
+<section id="events" style="background: var(--surface);">
+  <div class="container">
+    <div class="label-en fade-in">NEXT EVENT</div>
+    <h2 class="section-title fade-in">次回イベント</h2>
+
+    <div class="event-grid fade-in">
+      <div class="event-card">
+        <div class="event-header">
+          <div class="event-badge">関東コミュニティ</div>
+          <div class="event-vol">Vol.3</div>
+          <div class="event-status">日程候補確定</div>
+        </div>
+        <div class="event-body">
+          <h3>次回テーマ準備中</h3>
+          <div class="event-info">
+            <div class="event-info-item">
+              <span class="event-info-label">開催日時：</span>
+              2026年5月18日～22日（候補）
+            </div>
+            <div class="event-info-item">
+              <span class="event-info-label">開催場所：</span>
+              東京都内（詳細未定）
+            </div>
+          </div>
+          <p class="event-desc">関東コミュニティ第3回イベントの日程候補が5月18日～22日で決まりました。詳細は現在調整中です。確定次第、こちらで改めてお知らせします。</p>
+          <div class="event-button">
+            <a href="mailto:seino@recore-corp.jp" class="btn btn-gold">開催通知を受け取る</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-header">
+          <div class="event-badge">関西コミュニティ</div>
+          <div class="event-vol">Vol.1</div>
+          <div class="event-status">準備中</div>
+        </div>
+        <div class="event-body">
+          <h3>関西コミュニティ始動</h3>
+          <div class="event-info">
+            <div class="event-info-item">
+              <span class="event-info-label">開催日時：</span>
+              2026年 開催予定
+            </div>
+            <div class="event-info-item">
+              <span class="event-info-label">開催場所：</span>
+              大阪・兵庫エリア（詳細未定）
+            </div>
+          </div>
+          <p class="event-desc">関西エリアでのコミュニティがいよいよスタートします。関西のRECOREユーザーが一堂に会する記念すべき第1回イベントです。</p>
+          <div class="event-button">
+            <a href="mailto:seino@recore-corp.jp" class="btn btn-gold">開催通知を受け取る</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p style="text-align: center; color: var(--text-sub); font-size: 13px; margin-top: 32px;" class="fade-in">
+      ※ 開催日程・会場・テーマは決定次第更新します。通知をご希望の方はメールにてお問い合わせください。
+    </p>
+  </div>
+</section>
+
+<!-- ===== EVENT REPORTS ===== -->
+<section id="reports" style="background: var(--bg);">
+  <div class="container">
+    <div class="label-en fade-in">EVENT REPORTS</div>
+    <h2 class="section-title fade-in">イベントレポート</h2>
+    <p class="section-sub fade-in">リユース業界のプロフェッショナルが集まり、実践的なノウハウを共有した<br>コミュニティイベントの記録です。</p>
+
+    <div class="report-grid fade-in">
+      <div class="report-card">
+        <div class="report-image">📸</div>
+        <div class="report-content">
+          <span class="report-badge">Vol.1</span>
+          <h3>Liquidと生成AIを活用して出品を効率化しよう！</h3>
+          <div class="report-meta">
+            <div class="report-meta-item">
+              <span class="report-meta-label">開催日</span>
+              2025年7月25日
+            </div>
+            <div class="report-meta-item">
+              <span class="report-meta-label">参加者</span>
+              15名
+            </div>
+          </div>
+          <p class="report-desc">RECOREのECテンプレート機能「Liquid」を活用した出品効率化をメインテーマに、ブックオフ様の実践事例を中心に情報共有を行いました。</p>
+          <a href="#" class="btn btn-gold" style="width: 100%; text-align: center;">詳細を見る</a>
+        </div>
+      </div>
+
+      <div class="report-card">
+        <div class="report-image">🎤</div>
+        <div class="report-content">
+          <span class="report-badge">Vol.2</span>
+          <h3>LINEミニアプリと会員ランク制度によるLTV最大化戦略</h3>
+          <div class="report-meta">
+            <div class="report-meta-item">
+              <span class="report-meta-label">開催日</span>
+              2026年1月23日
+            </div>
+            <div class="report-meta-item">
+              <span class="report-meta-label">登壇者</span>
+              株式会社アクト 吉田和由 氏
+            </div>
+          </div>
+          <p class="report-desc">中古工具専門リユースショップ「アクトツール」での LINEミニアプリ導入から会員ランク制度による LTV最大化戦略について共有。</p>
+          <a href="#" class="btn btn-gold" style="width: 100%; text-align: center;">詳細を見る</a>
+        </div>
+      </div>
+
+      <div class="report-card">
+        <div class="report-image">🌿</div>
+        <div class="report-content">
+          <span class="report-badge">Vol.1（関西）</span>
+          <h3>第1回RECORE関西コミュニティレポート</h3>
+          <div class="report-meta">
+            <div class="report-meta-item">
+              <span class="report-meta-label">開催日</span>
+              2026年6月5日
+            </div>
+            <div class="report-meta-item">
+              <span class="report-meta-label">参加者</span>
+              6名
+            </div>
+          </div>
+          <p class="report-desc">関西コミュニティの記念すべき第1回イベント。参加企業の成功事例を共有し、現場のリアルな工夫について深く掘り下げました。</p>
+          <a href="kansai/report.html" class="btn btn-gold" style="width: 100%; text-align: center;">詳細を見る</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ROADMAP ===== -->
+<section id="roadmap" style="background: var(--surface);">
+  <div class="container">
+    <div class="label-en fade-in">ROADMAP</div>
+    <h2 class="section-title fade-in">コミュニティ・ロードマップ</h2>
+    <p class="section-sub fade-in">RECOREコミュニティは3つのフェーズで段階的に進化していきます。<br>現在はPhase 1「繋がる」を推進中です。</p>
+
+    <div class="roadmap fade-in">
+      <div class="phase-card current">
+        <span class="phase-badge">現在進行中</span>
+        <div class="phase-number">1</div>
+        <h3>繋がる</h3>
+        <div class="phase-subtitle">信頼のインフラ構築</div>
+        <p class="phase-description">Slackでの本音トークによる交流深化。全国のRECOREユーザーが業界の垣根を越えてつながり、信頼関係の土台を築きます。</p>
+        <div class="phase-items">
+          <div class="phase-item">Slackコミュニティの活性化</div>
+          <div class="phase-item">定期オフラインイベントの開催</div>
+          <div class="phase-item">メンバー間の相互紹介</div>
+        </div>
+      </div>
+
+      <div class="phase-card">
+        <div class="phase-number">2</div>
+        <h3>深掘り</h3>
+        <div class="phase-subtitle">テーマ別分科会による共創</div>
+        <p class="phase-description">EC自動化、CRM戦略などのテーマ別分科会を設立。専門性の高い議論を通じて、業界の課題解決に向けた共創を進めます。</p>
+        <div class="phase-items">
+          <div class="phase-item">EC自動化分科会</div>
+          <div class="phase-item">CRM・LTV最大化分科会</div>
+          <div class="phase-item">業者間取引マッチング</div>
+        </div>
+      </div>
+
+      <div class="phase-card">
+        <div class="phase-number">3</div>
+        <h3>創る</h3>
+        <div class="phase-subtitle">共同開発パートナーシップ</div>
+        <p class="phase-description">RECORE開発チームとの提言型・共同開発パートナーシップへ。現場の声を直接プロダクトに反映し、業界標準を共に創り上げます。</p>
+        <div class="phase-items">
+          <div class="phase-item">プロダクト開発への提言</div>
+          <div class="phase-item">ベータ機能の先行テスト</div>
+          <div class="phase-item">業界標準の共同策定</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== JOIN ===== -->
+<section id="join" class="join-section">
+  <div class="container">
+    <div class="label-en" style="color: var(--gold);">JOIN US</div>
+    <h2 class="section-title">コミュニティに参加しませんか？</h2>
+    <p class="section-sub">RECOREをご利用中の企業様であれば、どなたでも参加できます。全国のリユース業界のプロフェッショナルと繋がり、ビジネスの成長を加速させましょう。</p>
+
+    <div class="join-grid">
+      <div class="join-benefit">
+        <h4>100社以上の知見へのアクセス</h4>
+        <p>全国のRECOREユーザーが蓄積した実践的なノウハウを共有できます。</p>
+      </div>
+      <div class="join-benefit">
+        <h4>業者間取引の機会</h4>
+        <p>RECORE導入企業同士での取引マッチングを通じた新たなビジネス機会。</p>
+      </div>
+      <div class="join-benefit">
+        <h4>最新DX活用事例</h4>
+        <p>Liquid × 生成AIなど最前線の技術活用事例をいち早く入手できます。</p>
+      </div>
+      <div class="join-benefit">
+        <h4>RECORE開発チームへの提言</h4>
+        <p>Phase 3では、現場の声を直接プロダクト開発に反映できます。</p>
+      </div>
+      <div class="join-benefit">
+        <h4>オフラインでの深い交流</h4>
+        <p>定期的なリアルイベントで、信頼関係を築けるパートナーと出会えます。</p>
+      </div>
+    </div>
+
+    <div class="join-info">
+      <h3>参加方法</h3>
+      <div class="join-info-item">
+        <div class="join-info-label">参加資格</div>
+        <div>RECOREをご利用中の企業様</div>
+      </div>
+      <div class="join-info-item">
+        <div class="join-info-label">参加費</div>
+        <div>無料（イベント2次会は有料の場合あり）</div>
+      </div>
+      <div class="join-info-item">
+        <div class="join-info-label">活動形式</div>
+        <div>オフラインイベント + Slackでのオンライン交流</div>
+      </div>
+      <div class="join-info-item">
+        <div class="join-info-label">お問い合わせ</div>
+        <div><a href="mailto:seino@recore-corp.jp" style="color: var(--gold); text-decoration: none;">seino@recore-corp.jp</a></div>
+      </div>
+    </div>
+
+    <a href="mailto:seino@recore-corp.jp" class="btn btn-gold" style="margin-top: 32px;">参加を申し込む</a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <p><strong>RECORE Community</strong> — 孤独な試行錯誤を終わらせる。</p>
+    <p style="margin: 12px 0; font-size: 12px;">
+      <a href="https://recore-corp.jp/" style="color: var(--gold); text-decoration: none;">コーポレートサイト</a> |
+      <a href="https://recore-pos.com/" style="color: var(--gold); text-decoration: none;">RECORE サービスHP</a> |
+      <a href="mailto:seino@recore-corp.jp" style="color: var(--gold); text-decoration: none;">お問い合わせ</a>
+    </p>
+    <p>© 2026 RECORE Community by 株式会社RECORE. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

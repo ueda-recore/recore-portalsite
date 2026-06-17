@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第1回コミュニティイベント レポート | RECORE 関西コミュニティ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --green-dark: #1E3A14;
+  --green-mid: #2D4E1C;
+  --green-card: #1A3212;
+  --gold: #C4D44A;
+  --gold-dim: rgba(196,212,74,0.15);
+  --text: #2C2C2C;
+  --text-sub: #6A6A6A;
+  --bg: #F7F7F2;
+  --surface: #FFFFFF;
+  --border: #DDE0D8;
+}
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+}
+
+/* ===== 共通 ===== */
+.container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+section { padding: 96px 24px; }
+.label-en {
+display: flex;
+align-items: center;
+gap: 12px;
+font-size: 11px;
+font-weight: 700;
+letter-spacing: 0.18em;
+color: var(--gold);
+margin-bottom: 16px;
+}
+.label-en::before {
+content: '';
+display: block;
+width: 32px;
+height: 2px;
+background: var(--gold);
+flex-shrink: 0;
+}
+.section-title {
+font-family: 'Zen Kaku Gothic New', sans-serif;
+font-size: clamp(24px, 4vw, 36px);
+font-weight: 900;
+color: var(--green-dark);
+line-height: 1.3;
+margin-bottom: 20px;
+}
+.section-sub {
+color: var(--text-sub);
+font-size: 15px;
+margin-bottom: 48px;
+max-width: 600px;
+}
+.btn {
+display: inline-flex;
+align-items: center;
+gap: 10px;
+background: var(--green-mid);
+color: #fff;
+font-size: 15px;
+font-weight: 700;
+padding: 15px 36px;
+border-radius: 12px;
+text-decoration: none;
+transition: all 0.2s;
+letter-spacing: 0.04em;
+box-shadow: 0 4px 16px rgba(45, 78, 28, 0.15);
+}
+.btn:hover { background: #3a6425; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(45, 78, 28, 0.2); }
+.btn-gold { background: var(--gold); color: var(--green-dark); }
+.btn-gold:hover { background: #d6e85a; }
+
+/* ===== HERO ===== */
+.hero {
+background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
+color: #fff;
+padding: 80px 24px;
+text-align: center;
+}
+.hero-title {
+font-family: 'Zen Kaku Gothic New', sans-serif;
+font-size: clamp(28px, 6vw, 44px);
+font-weight: 900;
+margin-bottom: 16px;
+}
+.hero-subtitle {
+font-size: 18px;
+opacity: 0.9;
+margin-bottom: 32px;
+max-width: 600px;
+margin-left: auto;
+margin-right: auto;
+}
+.hero-meta {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 24px;
+font-size: 14px;
+opacity: 0.85;
+}
+.hero-meta-item {
+display: flex;
+align-items: center;
+gap: 6px;
+}
+
+/* ===== INFO TABLE ===== */
+.info-table { max-width: 640px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04); margin: 40px auto; }
+.info-table table { width: 100%; border-collapse: collapse; }
+.info-table th, .info-table td {
+padding: 18px 24px;
+border-bottom: 1px solid var(--border);
+text-align: left;
+font-size: 14px;
+vertical-align: top;
+}
+.info-table tr:last-child th, .info-table tr:last-child td { border-bottom: none; }
+.info-table th { width: 110px; color: var(--text-sub); font-weight: 500; font-size: 13px; white-space: nowrap; background: var(--bg); }
+.info-table td { color: var(--green-dark); font-weight: 500; }
+
+/* ===== ABOUT SECTION ===== */
+.about-section {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 40px;
+align-items: start;
+margin: 40px 0;
+}
+.about-text h3 {
+font-size: 18px;
+font-weight: 700;
+color: var(--green-dark);
+margin-bottom: 16px;
+margin-top: 24px;
+}
+.about-text h3:first-child {
+margin-top: 0;
+}
+.about-text p {
+color: var(--text-sub);
+line-height: 1.85;
+margin-bottom: 16px;
+}
+.highlight-box {
+background: var(--gold-dim);
+border-left: 4px solid var(--gold);
+padding: 24px;
+border-radius: 8px;
+}
+
+/* ===== STATS ===== */
+.stats-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+gap: 20px;
+margin: 40px 0;
+}
+.stat-card {
+background: var(--surface);
+border: 1px solid var(--border);
+border-radius: 12px;
+padding: 28px 24px;
+text-align: center;
+transition: all 0.3s;
+}
+.stat-card:hover {
+transform: translateY(-4px);
+box-shadow: 0 8px 24px rgba(30, 58, 20, 0.1);
+border-color: var(--gold);
+}
+.stat-number {
+font-family: 'Zen Kaku Gothic New', sans-serif;
+font-size: 44px;
+font-weight: 900;
+color: var(--green-dark);
+margin-bottom: 8px;
+}
+.stat-label {
+color: var(--text-sub);
+font-size: 13px;
+font-weight: 500;
+}
+
+/* ===== TIMELINE ===== */
+.timeline {
+position: relative;
+padding-left: 40px;
+margin: 40px 0;
+}
+.timeline::before {
+content: '';
+position: absolute;
+left: 0;
+top: 0;
+bottom: 0;
+width: 2px;
+background: linear-gradient(180deg, var(--gold), transparent);
+}
+.timeline-item {
+position: relative;
+margin-bottom: 32px;
+padding-bottom: 24px;
+}
+.timeline-item::before {
+content: '';
+position: absolute;
+left: -48px;
+top: 0;
+width: 12px;
+height: 12px;
+border-radius: 50%;
+background: var(--gold);
+border: 3px solid var(--surface);
+}
+.timeline-time {
+font-weight: 700;
+color: var(--green-dark);
+font-size: 14px;
+margin-bottom: 4px;
+}
+.timeline-title {
+font-weight: 700;
+color: var(--green-dark);
+font-size: 16px;
+margin-bottom: 8px;
+}
+.timeline-desc {
+color: var(--text-sub);
+font-size: 14px;
+line-height: 1.7;
+}
+
+/* ===== GALLERY ===== */
+.gallery {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+gap: 16px;
+margin: 40px 0;
+}
+.gallery-item {
+position: relative;
+overflow: hidden;
+border-radius: 12px;
+aspect-ratio: 1;
+background: var(--bg);
+display: flex;
+align-items: center;
+justify-content: center;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.gallery-item.video {
+aspect-ratio: 16 / 9;
+grid-column: span 2;
+}
+.gallery-item img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform 0.3s;
+}
+.gallery-item:hover img {
+transform: scale(1.05);
+}
+.gallery-item-placeholder {
+width: 100%;
+height: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+color: var(--text-sub);
+gap: 8px;
+}
+.gallery-item-placeholder svg {
+width: 48px;
+height: 48px;
+stroke: currentColor;
+stroke-width: 1.5;
+fill: none;
+}
+
+/* ===== FEEDBACK ===== */
+.feedback-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 24px;
+margin: 40px 0;
+}
+.feedback-card {
+background: var(--surface);
+border: 1px solid var(--border);
+border-left: 4px solid var(--gold);
+border-radius: 12px;
+padding: 28px;
+}
+.feedback-header {
+display: flex;
+align-items: center;
+gap: 12px;
+margin-bottom: 16px;
+}
+.feedback-avatar {
+width: 40px;
+height: 40px;
+border-radius: 50%;
+background: var(--gold-dim);
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: 700;
+color: var(--green-dark);
+font-size: 18px;
+flex-shrink: 0;
+}
+.feedback-name {
+font-weight: 700;
+color: var(--green-dark);
+font-size: 14px;
+}
+.feedback-text {
+color: var(--text-sub);
+font-size: 14px;
+line-height: 1.8;
+}
+
+/* ===== CTA ===== */
+.cta { background: var(--green-card); color: #fff; text-align: center; padding: 80px 24px; }
+.cta .label-en { justify-content: center; }
+.cta .label-en::before { display: none; }
+.cta h2 {
+font-family: 'Zen Kaku Gothic New', sans-serif;
+font-size: clamp(22px, 4vw, 34px);
+font-weight: 900;
+margin-bottom: 16px;
+}
+.cta p { opacity: 0.7; font-size: 15px; margin-bottom: 36px; }
+.cta-note { margin-top: 16px; font-size: 12px; color: rgba(255,255,255,0.4); }
+
+/* ===== FOOTER ===== */
+footer {
+background: #0F1E09;
+color: rgba(255,255,255,0.4);
+text-align: center;
+padding: 28px 24px;
+font-size: 12px;
+}
+footer strong { color: rgba(255,255,255,0.7); }
+
+/* ===== FADE-IN ===== */
+.fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 640px) {
+.about-section { grid-template-columns: 1fr; }
+.gallery { grid-template-columns: 1fr 1fr; gap: 12px; }
+.gallery-item.video { grid-column: span 1; aspect-ratio: 1; }
+.feedback-grid { grid-template-columns: 1fr; }
+.stats-grid { grid-template-columns: repeat(2, 1fr); }
+section { padding: 56px 20px; }
+.hero { padding: 60px 20px; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+
+<section class="hero">
+  <div class="container">
+    <h1 class="hero-title fade-in">第1回<br>RECORE関西コミュニティレポート</h1>
+  </div>
+</section>
+
+<!-- ===== OVERVIEW ===== -->
+
+<section style="background: var(--bg);">
+  <div class="container">
+    <div class="label-en fade-in">OVERVIEW</div>
+    <h2 class="section-title fade-in">開催概要</h2>
+
+    <div class="info-table fade-in">
+      <table>
+        <tr>
+          <th>開催日時</th>
+          <td>2026年6月5日（金）17:00〜19:00</td>
+        </tr>
+        <tr>
+          <th>開催場所</th>
+          <td>NEXT51 三国ヶ丘店<br><span style="font-size: 12px; color: var(--text-sub);">〒590-0024 大阪府堺市堺区向陵中町４丁４−４</span></td>
+        </tr>
+        <tr>
+          <th>参加者数</th>
+          <td>6名</td>
+        </tr>
+        <tr>
+          <th>参加企業</th>
+          <td>3社</td>
+        </tr>
+        <tr>
+          <th>主催者</th>
+          <td>RECORE 関西コミュニティ</td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+
+<section style="background: var(--surface);">
+  <div class="container">
+    <div class="label-en fade-in">ABOUT EVENT</div>
+    <h2 class="section-title fade-in">イベント概要</h2>
+
+    <div class="about-text fade-in">
+      <h3>イベント目的</h3>
+      <p>今回のイベントは、<strong>「『小さな成功体験』を持ち寄り、自社の課題解決のヒントを一緒に見つける場所」</strong>をテーマに開催いたしました。参加者の皆様それぞれの成功事例を共有し合い、ユーザー全体のRECORE活用を底上げしていくことが最大の目的です。</p>
+
+      <h3>開催にあたってのこだわり</h3>
+      <p>私たちが特にこだわったのは、<strong>「明日からすぐに実践できるヒントを持ち帰っていただくこと」</strong>です。単なる抽象的な成功談を聞くのではなく、「現場でどんな工夫をしたのか」「どうやって壁を乗り越えたのか」といったリアルな粒度で話し合い、情報共有ができる場にしたいという気持ちで開催いたしました。</p>
+
+      <img src="images/about-image.jpg" alt="参加者の様子" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); margin-top: 32px;" class="fade-in">
+    </div>
+  </div>
+</section>
+
+<!-- ===== AGENDA ===== -->
+
+<section style="background: var(--bg);">
+  <div class="container">
+    <div class="label-en fade-in">AGENDA</div>
+    <h2 class="section-title fade-in">当日のタイムテーブル</h2>
+    <p class="section-sub fade-in">17:00〜19:00（約2時間）</p>
+
+    <div class="timeline fade-in">
+      <div class="timeline-item" style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; padding-bottom: 48px;">
+        <div>
+          <div class="timeline-time">17:00</div>
+          <div class="timeline-title">NEXT51 店内見学</div>
+          <div class="timeline-desc">長年RECOREをご愛用いただいている「有限会社きたに」様の実店舗、「NEXT51」の店内を見学させていただきました。実際に行われている日々の業務や、お客様を引きつける工夫を間近で拝見できただけでなく、今回は参加者様限定で「実際の経営データ」まで特別にご共有いただきました。抽象的な話ではなく、リアルな数字に基づいた経営施策をご教授いただき、本当に貴重で有意義な時間となりました。</div>
+        </div>
+        <video src="images/session-1700.mp4" controls autoplay muted style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);"></video>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-time">17:30</div>
+        <div class="timeline-title">RECORE新機能紹介</div>
+        <div class="timeline-desc">RECOREの最新アップデートである、商品以外への「属性」機能についてご紹介いたしました。事前に「機能が追加されたのは知っているが、自社でどう活用すればいいか分からない」というリアルなお声をいただいておりました。そこで今回は単なる機能報告に留まらず、具体的なユースケースの共有や、各社様の業務に合わせた活用方法のご提案を行いました。</div>
+      </div>
+
+      <div class="timeline-item" style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; padding-bottom: 48px;">
+        <div>
+          <div class="timeline-time">18:00</div>
+          <div class="timeline-title">成功事例共有（皆さんどうしてますか？）</div>
+          <div class="timeline-desc">本イベントのメインとも言える、参加企業様同士のディスカッションです。事前に各社様へヒアリングを行い、以下の5つの具体的な議題をご用意しました：<br><br>
+          • <strong>効果があった（反応が良かった）集客方法について</strong><br>
+          • <strong>RECOREに蓄積した顧客情報をどう施策につなげてますか？</strong><br>
+          • <strong>日々の業務でAI使えてますか？ 何に使ってますか？</strong><br>
+          • <strong>リピーター顧客に繋げるための施策は何をしてますか？</strong><br>
+          • <strong>アルバイト・パートスタッフを育てるときに意識していることは？</strong><br><br>
+          普段はなかなか聞くことのできない「経営面のリアルな工夫」や「一歩踏み込んだRECOREの活用法」について、各社の成功事例を共有しながら深く掘り下げていきました。皆様が自社のノウハウをオープンに語り合い、踏み込んだ質問や具体的な相談が次々と飛び交う空間は、他では味わえない非常に有意義で予定していた時間があっという間に過ぎてしまいました。</div>
+        </div>
+        <video src="images/session-1800.mp4" controls autoplay muted style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); margin-top: 120px;"></video>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-time">18:50</div>
+        <div class="timeline-title">クロージング</div>
+        <div class="timeline-desc">本イベントのまとめとして、参加いただいた皆様への御礼と、RECORE関西コミュニティの今後についてお話しさせていただきました。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PHOTOS & VIDEOS ===== -->
+
+<section style="background: var(--surface);">
+  <div class="container">
+    <div class="label-en fade-in">PHOTOS & VIDEOS</div>
+    <h2 class="section-title fade-in">イベント当日の様子</h2>
+
+    <div class="gallery">
+      <div class="gallery-item fade-in">
+        <img src="images/gallery-img1.jpg" alt="参加者の様子1" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+      <div class="gallery-item video fade-in">
+        <video src="images/gallery-video-1.mp4" controls autoplay muted style="width: 100%; height: 100%; object-fit: cover;"></video>
+      </div>
+      <div class="gallery-item video fade-in">
+        <video src="images/gallery-video-2.mp4" controls autoplay muted style="width: 100%; height: 100%; object-fit: cover;"></video>
+      </div>
+      <div class="gallery-item fade-in">
+        <img src="images/gallery-img4.jpg" alt="参加者の様子2" style="width: 100%; height: 100%; object-fit: contain;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEEDBACK ===== -->
+
+<section style="background: var(--bg);">
+  <div class="container">
+    <div class="label-en fade-in">FEEDBACK</div>
+    <h2 class="section-title fade-in">参加者の声</h2>
+
+    <div class="feedback-grid">
+      <div class="feedback-card fade-in">
+        <div class="feedback-header">
+          <div class="feedback-name">有限会社きたに 代表木谷様</div>
+        </div>
+        <div class="feedback-text">
+          他事業の方々と話が出来てとても刺激になった。時間が足らなかったので次回も参加したいです
+        </div>
+      </div>
+
+      <div class="feedback-card fade-in">
+        <div class="feedback-header">
+          <div class="feedback-name">カメラ専門の宅配買取事業者様</div>
+        </div>
+        <div class="feedback-text">
+          他事業の方と話が出来てモチベーションが上がりました。RECOREの新機能を聞けてすぐに実践しようと思いました
+        </div>
+      </div>
+
+      <div class="feedback-card fade-in">
+        <div class="feedback-header">
+          <div class="feedback-name">出張買取事業者様</div>
+        </div>
+        <div class="feedback-text">
+          RECORE外の経営面についても話を聞くことが出来てとても貴重な時間になりました。まだまだ聞きたいことや、相談しきれなかったので次回も参加したいです
+        </div>
+      </div>
+
+      <div class="feedback-card fade-in">
+        <div class="feedback-header">
+          <div class="feedback-name">アパレル事業者様</div>
+        </div>
+        <div class="feedback-text">
+          RECOREの活用事例を直接聞けてとても勉強になりました。来店動機の取得やLINE施策、API活用のお話など、弊社でも今後検討していきたい内容が多く、大変有意義な時間でした
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONCLUSION ===== -->
+
+<section style="background: var(--surface);">
+  <div class="container">
+    <div class="label-en fade-in">CONCLUSION</div>
+    <h2 class="section-title fade-in">まとめ</h2>
+
+    <h3 style="font-size: 18px; font-weight: 700; color: var(--green-dark); margin-bottom: 24px;" class="fade-in">イベント開催を通じて得たもの</h3>
+    <p style="color: var(--text-sub); line-height: 1.9; margin-bottom: 16px;" class="fade-in">
+      本イベントを通じて得られた最大の成果は、<strong>「ユーザー様同士がリアルな知見を共有し合うことの絶大な価値」</strong>を再確認できたことです。
+    </p>
+    <p style="color: var(--text-sub); line-height: 1.9; margin-bottom: 16px;" class="fade-in">
+      実データの公開や、経営の裏側にまで踏み込んだディスカッションを通じて、参加者の皆様が<strong>「自社で明日からどう動くべきか」</strong>という具体的なヒントを数多く持ち帰ってくださいました。皆様がノウハウを惜しみなく共有し合う空間は、想像以上の熱気に包まれており、かけがえのない時間となりました。
+    </p>
+    <p style="color: var(--text-sub); line-height: 1.9; margin-bottom: 16px;" class="fade-in">
+      RECOREでは、単なるシステム提供に留まらず、こうした「現場の成功体験」を共有できる場を引き続き提供してまいります。今回惜しくもご参加いただけなかった皆様も、次回はぜひこの熱量の高いコミュニティをご体感ください。
+    </p>
+    <p style="color: var(--text-sub); line-height: 1.9;" class="fade-in">
+      お会いできる日を楽しみにしております！
+    </p>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+
+<section class="cta">
+  <div class="label-en">NEXT COMMUNITY</div>
+  <h2>次回のコミュニティイベント</h2>
+  <p>第1回イベントへのご参加ありがとうございました。<br>次回のイベント情報は準備でき次第、こちらでお知らせいたします。</p>
+  <p class="cta-note">RECORE関西コミュニティでは、定期的にコミュニティイベントを開催しており、<br>参加者同士の知見共有や交流の場を提供してまいります。</p>
+</section>
+
+<!-- ===== FOOTER ===== -->
+
+<footer>
+  <p><strong>RECORE</strong> &copy; 2025 株式会社RECORE. All rights reserved.</p>
+</footer>
+
+<script>
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
