@@ -952,13 +952,13 @@
     <a href="index.html#events" style="display: inline-flex; align-items: center; gap: 6px; color: var(--text-sub); font-size: 14px; text-decoration: none; margin-bottom: 24px;">← イベント一覧へ戻る</a>
     <div class="label-en fade-in">APPLY</div>
     <h2 class="section-title fade-in">参加申し込み</h2>
-    <p class="section-sub fade-in">関東コミュニティ第4回イベントへのお申し込みはこちらから。<br>受付後、担当より詳細をご連絡します。</p>
+    <p class="section-sub fade-in" id="apply-lead">関東コミュニティ第4回イベントへのお申し込みはこちらから。<br>受付後、担当より詳細をご連絡します。</p>
 
     <div class="apply-card fade-in">
       <div class="apply-event">
-        <strong>関東コミュニティ第4回イベント｜ブックオフ出品倉庫 見学会</strong><br>
-        2026年10月19日（月）12:00〜17:00（日程は仮です）<br>
-        東名横浜ロジスティクスセンター（神奈川県横浜市瀬谷区北町25-9）
+        <strong id="event-title">関東コミュニティ第4回イベント｜ブックオフ出品倉庫 見学会</strong><br>
+        <span id="event-date">2026年10月19日（月）12:00〜17:00（日程は仮です）</span><br>
+        <span id="event-place">東名横浜ロジスティクスセンター（神奈川県横浜市瀬谷区北町25-9）</span>
       </div>
 
       <form id="apply-form" novalidate>
@@ -996,7 +996,7 @@
               <span>参加しない</span>
             </label>
           </div>
-          <p class="form-note">見学会終了後の懇親会です。会場・会費は日程確定後にご案内します。</p>
+          <p class="form-note" id="party-note">見学会終了後の懇親会です。会場・会費は日程確定後にご案内します。</p>
         </div>
 
         <div class="form-row">
@@ -1033,6 +1033,37 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
 
+// ===== イベントの登録 =====
+// 新しいイベントを増やすときは、ここに1ブロック足して
+// トップページのボタンを apply.html?event=<キー> にするだけでよい。
+// キーは Google Apps Script 側の EVENT_SHEETS と揃えること（申し込みの記録先タブが決まる）。
+const EVENTS = {
+  'kanto-vol4': {
+    title: '関東コミュニティ第4回イベント｜ブックオフ出品倉庫 見学会',
+    name: '関東コミュニティ第4回イベント（ブックオフ出品倉庫 見学会）',
+    lead: '関東コミュニティ第4回イベントへのお申し込みはこちらから。<br>受付後、担当より詳細をご連絡します。',
+    date: '2026年10月19日（月）12:00〜17:00（日程は仮です）',
+    place: '東名横浜ロジスティクスセンター（神奈川県横浜市瀬谷区北町25-9）',
+    detail: 'ブックオフ出品倉庫の見学\nささげ・EC出品・ピッキング・梱包・出荷のオペレーションをご覧いただけます。',
+    partyNote: '見学会終了後の懇親会です。会場・会費は日程確定後にご案内します。'
+  }
+};
+const DEFAULT_EVENT_KEY = 'kanto-vol4';
+
+const currentKey = (() => {
+  const key = new URLSearchParams(location.search).get('event');
+  return EVENTS[key] ? key : DEFAULT_EVENT_KEY;
+})();
+const currentEvent = EVENTS[currentKey];
+
+// ページの表示をイベントに合わせて差し替える
+document.title = currentEvent.title.split('｜')[0] + ' 参加申し込み | RECORE Community';
+document.getElementById('apply-lead').innerHTML = currentEvent.lead;
+document.getElementById('event-title').textContent = currentEvent.title;
+document.getElementById('event-date').textContent = currentEvent.date;
+document.getElementById('event-place').textContent = currentEvent.place;
+document.getElementById('party-note').textContent = currentEvent.partyNote;
+
 // ===== 参加申し込みフォーム =====
 const APPLY_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwPjnAQYHOc6lL5sqcYhzsadNsmxQXv8E6huz60xY-4KtQfKuwS8nfkEaOhZJvExu1O/exec';
 
@@ -1057,7 +1088,11 @@ applyForm.addEventListener('submit', async (event) => {
     tel: applyForm.tel.value.trim(),
     party: party ? party.value : '',
     message: applyForm.message.value.trim(),
-    event: '関東コミュニティ第4回イベント（ブックオフ出品倉庫 見学会）'
+    eventKey: currentKey,
+    event: currentEvent.name,
+    eventDate: currentEvent.date,
+    eventPlace: currentEvent.place,
+    eventDetail: currentEvent.detail
   };
 
   if (!data.company || !data.name || !data.email || !data.tel || !data.party) {
