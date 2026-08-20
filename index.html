@@ -434,6 +434,142 @@
       margin-top: auto;
     }
 
+    /* ===== APPLY FORM ===== */
+    .apply-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 40px;
+      max-width: 720px;
+      margin: 40px auto 0;
+      box-shadow: 0 8px 24px rgba(30, 58, 20, 0.06);
+    }
+
+    .apply-event {
+      background: var(--bg);
+      border-left: 4px solid var(--gold);
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      font-size: 14px;
+      color: var(--text-sub);
+      line-height: 1.9;
+    }
+
+    .apply-event strong {
+      color: var(--green-dark);
+      font-size: 15px;
+    }
+
+    .form-row {
+      margin-bottom: 20px;
+    }
+
+    .form-row label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .form-required {
+      display: inline-block;
+      background: var(--green-mid);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 3px;
+      margin-left: 8px;
+      vertical-align: 2px;
+    }
+
+    .form-optional {
+      display: inline-block;
+      background: var(--border);
+      color: var(--text-sub);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 3px;
+      margin-left: 8px;
+      vertical-align: 2px;
+    }
+
+    .form-row input,
+    .form-row textarea {
+      width: 100%;
+      padding: 13px 16px;
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--text);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .form-row input:focus,
+    .form-row textarea:focus {
+      outline: none;
+      border-color: var(--green-mid);
+      box-shadow: 0 0 0 3px var(--gold-dim);
+      background: var(--surface);
+    }
+
+    .form-row textarea {
+      min-height: 110px;
+      resize: vertical;
+      line-height: 1.7;
+    }
+
+    .form-note {
+      font-size: 12px;
+      color: var(--text-sub);
+      margin-top: 6px;
+    }
+
+    .form-submit {
+      text-align: center;
+      margin-top: 32px;
+    }
+
+    .form-submit .btn {
+      justify-content: center;
+      min-width: 240px;
+    }
+
+    .form-submit .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .form-message {
+      display: none;
+      margin-top: 20px;
+      padding: 16px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .form-message.success {
+      display: block;
+      background: var(--gold-dim);
+      border: 1px solid var(--gold);
+      color: var(--green-dark);
+    }
+
+    .form-message.error {
+      display: block;
+      background: #fdecea;
+      border: 1px solid #f5c2bd;
+      color: #a8342a;
+    }
+
     /* ===== ROADMAP ===== */
     .roadmap {
       display: grid;
@@ -723,6 +859,15 @@
         grid-template-columns: 1fr;
       }
 
+      .apply-card {
+        padding: 24px 20px;
+      }
+
+      .form-submit .btn {
+        width: 100%;
+        min-width: 0;
+      }
+
       .hero-buttons {
         flex-direction: column;
         align-items: center;
@@ -904,23 +1049,28 @@
         <div class="event-header">
           <div class="event-badge">関東コミュニティ</div>
           <div class="event-vol">Vol.4</div>
-          <div class="event-status">準備中</div>
+          <div class="event-status">2026年10月19日（月）開催予定</div>
         </div>
         <div class="event-body">
-          <h3>関東コミュニティ第4回イベント</h3>
+          <h3>関東コミュニティ第4回イベント<br>ブックオフ出品倉庫 見学会</h3>
           <div class="event-info">
             <div class="event-info-item">
               <span class="event-info-label">開催日時：</span>
-              準備中
+              2026年10月19日（月）12:00〜17:00<span style="color: var(--green-mid); font-weight: 700;">（仮）</span>
             </div>
             <div class="event-info-item">
               <span class="event-info-label">開催場所：</span>
-              準備中
+              東名横浜ロジスティクスセンター<br>
+              <span style="font-size: 13px;">神奈川県横浜市瀬谷区北町25-9</span>
+            </div>
+            <div class="event-info-item">
+              <span class="event-info-label">内容：</span>
+              ブックオフ出品倉庫の見学
             </div>
           </div>
-          <p class="event-desc">関東コミュニティ第3回イベントの開催準備を進めています。日程や詳細が決まり次第、こちらで改めてお知らせします。</p>
+          <p class="event-desc">ささげ（撮影・採寸・原稿）からEC出品、ピッキング、梱包、出荷まで、出品倉庫のオペレーションを丸ごと見学いただけます。自社の出品フローを見直すヒントを、現場で持ち帰ってください。</p>
           <div class="event-button">
-            <a href="mailto:seino@recore-corp.jp" class="btn btn-gold">開催通知を受け取る</a>
+            <a href="#apply" class="btn btn-gold">参加を申し込む</a>
           </div>
         </div>
       </div>
@@ -952,8 +1102,61 @@
     </div>
 
     <p style="text-align: center; color: var(--text-sub); font-size: 13px; margin-top: 32px;" class="fade-in">
-      ※ 開催日程・会場・テーマは決定次第更新します。通知をご希望の方はメールにてお問い合わせください。
+      ※ 関東コミュニティ第4回イベントの日程は現時点で仮です。確定次第、こちらで改めてお知らせします。<br>
+      ※ 関西コミュニティ第2回イベントの日程・会場・テーマは決定次第更新します。
     </p>
+  </div>
+</section>
+
+<!-- ===== APPLY FORM ===== -->
+<section id="apply">
+  <div class="container">
+    <div class="label-en fade-in">APPLY</div>
+    <h2 class="section-title fade-in">参加申し込み</h2>
+    <p class="section-sub fade-in">関東コミュニティ第4回イベントへのお申し込みはこちらから。<br>受付後、担当より詳細をご連絡します。</p>
+
+    <div class="apply-card fade-in">
+      <div class="apply-event">
+        <strong>関東コミュニティ第4回イベント｜ブックオフ出品倉庫 見学会</strong><br>
+        2026年10月19日（月）12:00〜17:00（日程は仮です）<br>
+        東名横浜ロジスティクスセンター（神奈川県横浜市瀬谷区北町25-9）
+      </div>
+
+      <form id="apply-form" novalidate>
+        <div class="form-row">
+          <label for="f-company">会社名<span class="form-required">必須</span></label>
+          <input type="text" id="f-company" name="company" required autocomplete="organization" placeholder="株式会社RECORE">
+        </div>
+
+        <div class="form-row">
+          <label for="f-name">お名前<span class="form-required">必須</span></label>
+          <input type="text" id="f-name" name="name" required autocomplete="name" placeholder="山田 太郎">
+        </div>
+
+        <div class="form-row">
+          <label for="f-email">メールアドレス<span class="form-required">必須</span></label>
+          <input type="email" id="f-email" name="email" required autocomplete="email" placeholder="example@company.co.jp">
+          <p class="form-note">受付確認と当日のご案内をこちらにお送りします。</p>
+        </div>
+
+        <div class="form-row">
+          <label for="f-tel">電話番号<span class="form-required">必須</span></label>
+          <input type="tel" id="f-tel" name="tel" required autocomplete="tel" placeholder="03-1234-5678">
+          <p class="form-note">当日の緊急連絡先として使用します。</p>
+        </div>
+
+        <div class="form-row">
+          <label for="f-message">ご質問・ご要望<span class="form-optional">任意</span></label>
+          <textarea id="f-message" name="message" placeholder="見学で特に見たい工程、当日の交通手段のご相談など、ご自由にご記入ください。"></textarea>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn btn-gold" id="apply-submit">申し込む</button>
+        </div>
+      </form>
+
+      <div class="form-message" id="form-message"></div>
+    </div>
   </div>
 </section>
 
@@ -1006,7 +1209,7 @@
       </div>
     </div>
 
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfb0A6hANqHYdg5HQKNyAAJzLGMlrdKq7TCi_xy52-ZSUD3vg/viewform?usp=publish-editor" target="_blank" class="btn btn-gold" style="margin-top: 32px;">参加を申し込む</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfb0A6hANqHYdg5HQKNyAAJzLGMlrdKq7TCi_xy52-ZSUD3vg/viewform?usp=publish-editor" target="_blank" class="btn btn-gold" style="margin-top: 32px;">コミュニティに参加する</a>
   </div>
 </section>
 
@@ -1028,6 +1231,63 @@ const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+// ===== 参加申し込みフォーム =====
+const APPLY_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwPjnAQYHOc6lL5sqcYhzsadNsmxQXv8E6huz60xY-4KtQfKuwS8nfkEaOhZJvExu1O/exec';
+
+const applyForm = document.getElementById('apply-form');
+const applyMessage = document.getElementById('form-message');
+const applyButton = document.getElementById('apply-submit');
+
+function showApplyMessage(type, html) {
+  applyMessage.className = 'form-message ' + type;
+  applyMessage.innerHTML = html;
+}
+
+applyForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  const data = {
+    company: applyForm.company.value.trim(),
+    name: applyForm.name.value.trim(),
+    email: applyForm.email.value.trim(),
+    tel: applyForm.tel.value.trim(),
+    message: applyForm.message.value.trim(),
+    event: '関東コミュニティ第4回イベント（ブックオフ出品倉庫 見学会）'
+  };
+
+  if (!data.company || !data.name || !data.email || !data.tel) {
+    showApplyMessage('error', '必須項目（会社名・お名前・メールアドレス・電話番号）をご入力ください。');
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+    showApplyMessage('error', 'メールアドレスの形式をご確認ください。');
+    return;
+  }
+
+  applyButton.disabled = true;
+  applyButton.textContent = '送信中…';
+  applyMessage.className = 'form-message';
+
+  try {
+    // Content-Type は text/plain（プリフライトを避けるため）
+    const res = await fetch(APPLY_ENDPOINT, {
+      method: 'POST',
+      body: JSON.stringify(data)
+    });
+    const result = await res.json();
+    if (!result.ok) throw new Error(result.error || 'unknown');
+
+    applyForm.reset();
+    applyForm.style.display = 'none';
+    showApplyMessage('success', 'お申し込みありがとうございます。<br>受付確認のメールをお送りしましたのでご確認ください。追って担当より詳細をご連絡します。');
+  } catch (err) {
+    showApplyMessage('error', '送信に失敗しました。お手数ですが <a href="mailto:seino@recore-corp.jp" style="color: inherit;">seino@recore-corp.jp</a> まで直接ご連絡ください。');
+  } finally {
+    applyButton.disabled = false;
+    applyButton.textContent = '申し込む';
+  }
+});
 </script>
 
 </body>
