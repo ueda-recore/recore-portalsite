@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RECORE Community | リユース業界の成長の生態系</title>
+  <title>参加申し込み | RECORE Community</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@400;700;900&display=swap" rel="stylesheet">
@@ -936,278 +936,81 @@
 <!-- ===== HEADER ===== -->
 <header>
   <nav>
-    <a href="#" class="logo">RECORE<span class="logo-sub">Community</span></a>
+    <a href="index.html" class="logo">RECORE<span class="logo-sub">Community</span></a>
     <nav-links>
-      <button onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">コミュニティとは</button>
-      <button onclick="document.getElementById('events').scrollIntoView({behavior: 'smooth'})">次回イベント</button>
-      <button onclick="document.getElementById('reports').scrollIntoView({behavior: 'smooth'})">イベントレポート</button>
+      <button onclick="location.href='index.html#about'">コミュニティとは</button>
+      <button onclick="location.href='index.html#events'">次回イベント</button>
+      <button onclick="location.href='index.html#reports'">イベントレポート</button>
     </nav-links>
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSfb0A6hANqHYdg5HQKNyAAJzLGMlrdKq7TCi_xy52-ZSUD3vg/viewform?usp=publish-editor" target="_blank" class="btn-primary" style="text-decoration: none; display: inline-flex; align-items: center;">参加する</a>
   </nav>
 </header>
 
-<!-- ===== HERO ===== -->
-<section class="hero">
-  <div class="hero-content">
-    <div class="hero-logo fade-in">RECORE COMMUNITY</div>
-    <h1 class="hero-title fade-in">孤独な試行錯誤を<br><em>終わらせる。</em></h1>
-    <p class="hero-subtitle fade-in">RECOREコミュニティは、リユース業界のプロフェッショナルが知見を共有し、共に成長する「成長の生態系」です。</p>
-  </div>
-</section>
-
-<!-- ===== ABOUT ===== -->
-<section id="about" style="background: var(--surface);">
+<!-- ===== APPLY FORM ===== -->
+<section id="apply">
   <div class="container">
-    <div class="label-en fade-in">ABOUT</div>
-    <h2 class="section-title fade-in">RECOREコミュニティとは</h2>
+    <a href="index.html#events" style="display: inline-flex; align-items: center; gap: 6px; color: var(--text-sub); font-size: 14px; text-decoration: none; margin-bottom: 24px;">← イベント一覧へ戻る</a>
+    <div class="label-en fade-in">APPLY</div>
+    <h2 class="section-title fade-in">参加申し込み</h2>
+    <p class="section-sub fade-in">関東コミュニティ第4回イベントへのお申し込みはこちらから。<br>受付後、担当より詳細をご連絡します。</p>
 
-    <div style="margin: 40px 0;">
-      <p style="font-size: 18px; line-height: 1.8; color: var(--text-sub); margin-bottom: 48px; max-width: 800px;" class="fade-in">RECOREユーザーの横のつながりを作ることで相互作用を生むことを目指しています。リユース業界という特殊な業界の中でしっかり機能するコミュニティには、大きな価値があると考えています。</p>
-
-      <h3 style="font-size: 18px; font-weight: 700; color: var(--green-dark); margin-bottom: 16px;" class="fade-in">コミュニティで得られるもの</h3>
-      <div class="benefits-list fade-in">
-        <div class="benefit-item">
-          <strong>継続的なビジネス成果を創出する土台</strong>
-          <p>相互に学び、アイデアを交換し、ビジネス成長を加速させます。</p>
-        </div>
-        <div class="benefit-item">
-          <strong>他のRECOREユーザーとの情報交換・相談</strong>
-          <p>全国のユーザーと直接つながり、経営課題の解決策を共有できます。</p>
-        </div>
-        <div class="benefit-item">
-          <strong>活用事例・成功事例の共有</strong>
-          <p>RECORE導入企業の成功事例や失敗事例から実践的なノウハウを習得できます。</p>
-        </div>
-        <div class="benefit-item">
-          <strong>業者間取引の斡旋</strong>
-          <p>RECORE導入企業同士での新たなビジネス機会を創出します。</p>
-        </div>
+    <div class="apply-card fade-in">
+      <div class="apply-event">
+        <strong>関東コミュニティ第4回イベント｜ブックオフ出品倉庫 見学会</strong><br>
+        2026年10月19日（月）12:00〜17:00（日程は仮です）<br>
+        東名横浜ロジスティクスセンター（神奈川県横浜市瀬谷区北町25-9）
       </div>
 
-      <h3 style="font-size: 18px; font-weight: 700; color: var(--green-dark); margin-bottom: 16px; margin-top: 48px;" class="fade-in">基本ルール</h3>
-      <p style="color: var(--text-sub); line-height: 1.85; max-width: 800px;" class="fade-in">株式会社RECOREからの対価は支払われません。他のメンバーが不快になるような営業活動は禁止です。運営メンバーや参加者の負担にならないよう、オフラインでの交流を大切にしています。</p>
+      <form id="apply-form" novalidate>
+        <div class="form-row">
+          <label for="f-company">会社名<span class="form-required">必須</span></label>
+          <input type="text" id="f-company" name="company" required autocomplete="organization" placeholder="株式会社RECORE">
+        </div>
+
+        <div class="form-row">
+          <label for="f-name">お名前<span class="form-required">必須</span></label>
+          <input type="text" id="f-name" name="name" required autocomplete="name" placeholder="山田 太郎">
+        </div>
+
+        <div class="form-row">
+          <label for="f-email">メールアドレス<span class="form-required">必須</span></label>
+          <input type="email" id="f-email" name="email" required autocomplete="email" placeholder="example@company.co.jp">
+          <p class="form-note">受付確認と当日のご案内をこちらにお送りします。</p>
+        </div>
+
+        <div class="form-row">
+          <label for="f-tel">電話番号<span class="form-required">必須</span></label>
+          <input type="tel" id="f-tel" name="tel" required autocomplete="tel" placeholder="03-1234-5678">
+          <p class="form-note">当日の緊急連絡先として使用します。</p>
+        </div>
+
+        <div class="form-row">
+          <label>懇親会の参加<span class="form-required">必須</span></label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="party" value="参加する">
+              <span>参加する</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="party" value="参加しない">
+              <span>参加しない</span>
+            </label>
+          </div>
+          <p class="form-note">見学会終了後の懇親会です。会場・会費は日程確定後にご案内します。</p>
+        </div>
+
+        <div class="form-row">
+          <label for="f-message">ご質問・ご要望<span class="form-optional">任意</span></label>
+          <textarea id="f-message" name="message" placeholder="見学で特に見たい工程、当日の交通手段のご相談など、ご自由にご記入ください。"></textarea>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn btn-gold" id="apply-submit">申し込む</button>
+        </div>
+      </form>
+
+      <div class="form-message" id="form-message"></div>
     </div>
-  </div>
-</section>
-
-<!-- ===== EVENT REPORTS ===== -->
-<section id="reports" style="background: var(--bg);">
-  <div class="container">
-    <div class="label-en fade-in">EVENT REPORTS</div>
-    <h2 class="section-title fade-in">イベントレポート</h2>
-    <p class="section-sub fade-in">リユース業界のプロフェッショナルが集まり、実践的なノウハウを共有した<br>コミュニティイベントの記録です。</p>
-
-    <!-- 関東コミュニティ -->
-    <h3 style="font-size: 18px; font-weight: 700; color: var(--green-dark); margin-bottom: 24px; margin-top: 48px;" class="fade-in">関東コミュニティ</h3>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin: 24px 0;">
-      <div class="report-card fade-in">
-        <div class="report-image" style="font-size: 16px; font-weight: 700; color: #fff; background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%); padding: 24px; display: flex; align-items: center; justify-content: center; min-height: 120px; text-align: center;">第1回RECORE関東コミュニティレポート</div>
-        <div class="report-content">
-          <span class="report-badge">Vol.1</span>
-          <h3>Liquidと生成AIを活用して出品を効率化しよう！</h3>
-          <div class="report-meta">
-            <div class="report-meta-item">
-              <span class="report-meta-label">開催日</span>
-              2025年9月16日
-            </div>
-            <div class="report-meta-item">
-              <span class="report-meta-label">参加者</span>
-              8名
-            </div>
-          </div>
-          <p class="report-desc">RECOREのECテンプレート機能「Liquid」を活用した出品効率化をメインテーマに、ブックオフ様の実践事例を中心に情報共有を行いました。</p>
-          <a href="https://ueda-recore.github.io/report/kanto/vol1/report.html" class="btn btn-gold" style="width: 100%; text-align: center;">詳細を見る</a>
-        </div>
-      </div>
-
-      <div class="report-card fade-in">
-        <div class="report-image" style="font-size: 16px; font-weight: 700; color: #fff; background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%); padding: 24px; display: flex; align-items: center; justify-content: center; min-height: 120px; text-align: center;">第2回RECORE関東コミュニティレポート</div>
-        <div class="report-content">
-          <span class="report-badge">Vol.2</span>
-          <h3>LINEミニアプリと会員ランク制度によるLTV最大化戦略</h3>
-          <div class="report-meta">
-            <div class="report-meta-item">
-              <span class="report-meta-label">開催日</span>
-              2026年1月23日
-            </div>
-            <div class="report-meta-item">
-              <span class="report-meta-label">登壇者</span>
-              株式会社アクト 吉田和由 氏
-            </div>
-          </div>
-          <p class="report-desc">中古工具専門リユースショップ「アクトツール」での LINEミニアプリ導入から会員ランク制度による LTV最大化戦略について共有。</p>
-          <a href="https://ueda-recore.github.io/report/kanto/vol2/report.html" class="btn btn-gold" style="width: 100%; text-align: center;">詳細を見る</a>
-        </div>
-      </div>
-
-      <div class="report-card fade-in">
-        <div class="report-image" style="font-size: 16px; font-weight: 700; color: #fff; background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%); padding: 24px; display: flex; align-items: center; justify-content: center; min-height: 120px; text-align: center;">第3回RECORE関東コミュニティレポート</div>
-        <div class="report-content">
-          <span class="report-badge">Vol.3</span>
-          <h3>RECOREのカタログに対する思想の共有／型番がない商品の理想的なカタログ管理とは？</h3>
-          <div class="report-meta">
-            <div class="report-meta-item">
-              <span class="report-meta-label">開催日</span>
-              2026年6月19日
-            </div>
-            <div class="report-meta-item">
-              <span class="report-meta-label">登壇者</span>
-              株式会社RECORE 清野隼土
-            </div>
-          </div>
-          <p class="report-desc">RECOREのカタログ設計思想（親子構造・属性設計）と、型番がない商品の理想的なカタログ管理方法について、2つの講座で共有しました。</p>
-          <a href="https://ueda-recore.github.io/report/kanto/vol3/report.html" class="btn btn-gold" style="width: 100%; text-align: center;">詳細を見る</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- 関西コミュニティ -->
-    <h3 style="font-size: 18px; font-weight: 700; color: var(--green-dark); margin-bottom: 24px; margin-top: 48px;" class="fade-in">関西コミュニティ</h3>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin: 24px 0;">
-      <div class="report-card fade-in">
-        <div class="report-image" style="font-size: 16px; font-weight: 700; color: #fff; background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%); padding: 24px; display: flex; align-items: center; justify-content: center; min-height: 120px; text-align: center;">第1回RECORE関西コミュニティレポート</div>
-        <div class="report-content">
-          <span class="report-badge">Vol.1（関西）</span>
-          <h3>第1回RECORE関西コミュニティレポート</h3>
-          <div class="report-meta">
-            <div class="report-meta-item">
-              <span class="report-meta-label">開催日</span>
-              2026年6月5日
-            </div>
-            <div class="report-meta-item">
-              <span class="report-meta-label">参加者</span>
-              6名
-            </div>
-          </div>
-          <p class="report-desc">関西コミュニティの記念すべき第1回イベント。参加企業の成功事例を共有し、現場のリアルな工夫について深く掘り下げました。</p>
-          <a href="https://ueda-recore.github.io/report/kansai/report.html" class="btn btn-gold" style="width: 100%; text-align: center;">詳細を見る</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== NEXT EVENTS ===== -->
-<section id="events" style="background: var(--surface);">
-  <div class="container">
-    <div class="label-en fade-in">NEXT EVENT</div>
-    <h2 class="section-title fade-in">次回イベント</h2>
-
-    <div class="event-grid fade-in">
-      <div class="event-card">
-        <div class="event-header">
-          <div class="event-badge">関東コミュニティ</div>
-          <div class="event-vol">Vol.4</div>
-          <div class="event-status">2026年10月19日（月）開催予定</div>
-        </div>
-        <div class="event-body">
-          <h3>関東コミュニティ第4回イベント<br>ブックオフ出品倉庫 見学会</h3>
-          <div class="event-info">
-            <div class="event-info-item">
-              <span class="event-info-label">開催日時：</span>
-              2026年10月19日（月）12:00〜17:00<span style="color: var(--green-mid); font-weight: 700;">（仮）</span>
-            </div>
-            <div class="event-info-item">
-              <span class="event-info-label">開催場所：</span>
-              東名横浜ロジスティクスセンター<br>
-              <span style="font-size: 13px;">神奈川県横浜市瀬谷区北町25-9</span>
-            </div>
-            <div class="event-info-item">
-              <span class="event-info-label">内容：</span>
-              ブックオフ出品倉庫の見学
-            </div>
-          </div>
-          <p class="event-desc">ささげ（撮影・採寸・原稿）からEC出品、ピッキング、梱包、出荷まで、出品倉庫のオペレーションを丸ごと見学いただけます。自社の出品フローを見直すヒントを、現場で持ち帰ってください。</p>
-          <div class="event-button">
-            <a href="apply.html" class="btn btn-gold">参加を申し込む</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-card">
-        <div class="event-header">
-          <div class="event-badge">関西コミュニティ</div>
-          <div class="event-vol">Vol.2</div>
-          <div class="event-status">準備中</div>
-        </div>
-        <div class="event-body">
-          <h3>関西コミュニティ第2回イベント</h3>
-          <div class="event-info">
-            <div class="event-info-item">
-              <span class="event-info-label">開催日時：</span>
-              準備中
-            </div>
-            <div class="event-info-item">
-              <span class="event-info-label">開催場所：</span>
-              準備中
-            </div>
-          </div>
-          <p class="event-desc">関西コミュニティ第2回イベントの開催準備を進めています。日程や詳細が決まり次第、こちらで改めてお知らせします。</p>
-          <div class="event-button">
-            <a href="mailto:seino@recore-corp.jp" class="btn btn-gold">開催通知を受け取る</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <p style="text-align: center; color: var(--text-sub); font-size: 13px; margin-top: 32px;" class="fade-in">
-      ※ 関東コミュニティ第4回イベントの日程は現時点で仮です。確定次第、こちらで改めてお知らせします。<br>
-      ※ 関西コミュニティ第2回イベントの日程・会場・テーマは決定次第更新します。
-    </p>
-  </div>
-</section>
-
-
-<!-- ===== JOIN ===== -->
-<section id="join" class="join-section">
-  <div class="container">
-    <div class="label-en" style="color: var(--gold);">JOIN US</div>
-    <h2 class="section-title">コミュニティに参加しませんか？</h2>
-    <p class="section-sub" style="max-width: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">RECOREをご利用中の企業様であれば、どなたでも参加できます。全国のリユース業界のプロフェッショナルと繋がり、ビジネスの成長を加速させましょう。</p>
-
-    <div class="join-grid">
-      <div class="join-benefit">
-        <h4>100社以上の知見へのアクセス</h4>
-        <p>全国のRECOREユーザーが蓄積した実践的なノウハウを共有できます。</p>
-      </div>
-      <div class="join-benefit">
-        <h4>最新DX活用事例</h4>
-        <p>Liquid × 生成AIなど最前線の技術活用事例をいち早く入手できます。</p>
-      </div>
-      <div class="join-benefit">
-        <h4>RECORE新機能共有</h4>
-        <p>最新機能や更新情報をコミュニティメンバーに優先的に共有し、導入活用をサポートします。</p>
-      </div>
-      <div class="join-benefit">
-        <h4>オフラインでの深い交流</h4>
-        <p>定期的なリアルイベントで、信頼関係を築けるパートナーと出会えます。</p>
-      </div>
-    </div>
-
-    <div class="join-info">
-      <h3>参加方法</h3>
-      <div class="join-info-item">
-        <div class="join-info-label">参加資格</div>
-        <div>RECOREをご利用中の企業様</div>
-      </div>
-      <div class="join-info-item">
-        <div class="join-info-label">参加費</div>
-        <div>無料（イベント2次会は有料の場合あり）</div>
-      </div>
-      <div class="join-info-item">
-        <div class="join-info-label">活動形式</div>
-        <div>オフラインイベント</div>
-      </div>
-      <div class="join-info-item">
-        <div class="join-info-label">お問い合わせ</div>
-        <div style="display: flex; flex-direction: column; gap: 8px;">
-          <div>【関東コミュニティ窓口】 清野：<a href="mailto:seino@recore-corp.jp" style="color: var(--gold); text-decoration: none;">seino@recore-corp.jp</a></div>
-          <div>【関西コミュニティ窓口】 上田：<a href="mailto:ueda@recore-corp.jp" style="color: var(--gold); text-decoration: none;">ueda@recore-corp.jp</a></div>
-        </div>
-      </div>
-    </div>
-
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfb0A6hANqHYdg5HQKNyAAJzLGMlrdKq7TCi_xy52-ZSUD3vg/viewform?usp=publish-editor" target="_blank" class="btn btn-gold" style="margin-top: 32px;">コミュニティに参加する</a>
   </div>
 </section>
 
@@ -1229,6 +1032,66 @@ const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+// ===== 参加申し込みフォーム =====
+const APPLY_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwPjnAQYHOc6lL5sqcYhzsadNsmxQXv8E6huz60xY-4KtQfKuwS8nfkEaOhZJvExu1O/exec';
+
+const applyForm = document.getElementById('apply-form');
+const applyMessage = document.getElementById('form-message');
+const applyButton = document.getElementById('apply-submit');
+
+function showApplyMessage(type, html) {
+  applyMessage.className = 'form-message ' + type;
+  applyMessage.innerHTML = html;
+}
+
+applyForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  const party = applyForm.querySelector('input[name="party"]:checked');
+
+  const data = {
+    company: applyForm.company.value.trim(),
+    name: applyForm.name.value.trim(),
+    email: applyForm.email.value.trim(),
+    tel: applyForm.tel.value.trim(),
+    party: party ? party.value : '',
+    message: applyForm.message.value.trim(),
+    event: '関東コミュニティ第4回イベント（ブックオフ出品倉庫 見学会）'
+  };
+
+  if (!data.company || !data.name || !data.email || !data.tel || !data.party) {
+    showApplyMessage('error', '必須項目（会社名・お名前・メールアドレス・電話番号・懇親会の参加）をご入力ください。');
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+    showApplyMessage('error', 'メールアドレスの形式をご確認ください。');
+    return;
+  }
+
+  applyButton.disabled = true;
+  applyButton.textContent = '送信中…';
+  applyMessage.className = 'form-message';
+
+  try {
+    // Content-Type は text/plain（プリフライトを避けるため）
+    const res = await fetch(APPLY_ENDPOINT, {
+      method: 'POST',
+      body: JSON.stringify(data)
+    });
+    const result = await res.json();
+    if (!result.ok) throw new Error(result.error || 'unknown');
+
+    applyForm.reset();
+    applyForm.style.display = 'none';
+    showApplyMessage('success', 'お申し込みありがとうございます。<br>受付確認のメールをお送りしましたのでご確認ください。追って担当より詳細をご連絡します。');
+  } catch (err) {
+    showApplyMessage('error', '送信に失敗しました。お手数ですが <a href="mailto:seino@recore-corp.jp" style="color: inherit;">seino@recore-corp.jp</a> まで直接ご連絡ください。');
+  } finally {
+    applyButton.disabled = false;
+    applyButton.textContent = '申し込む';
+  }
+});
 </script>
 
 </body>
