@@ -498,7 +498,8 @@
     }
 
     .form-row input,
-    .form-row textarea {
+    .form-row textarea,
+    .form-row select {
       width: 100%;
       padding: 13px 16px;
       font-size: 15px;
@@ -509,10 +510,24 @@
       border-radius: 8px;
       transition: border-color 0.2s, box-shadow 0.2s;
       -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-row select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236A6A6A' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 44px;
+      cursor: pointer;
+    }
+
+    .form-row select:invalid {
+      color: var(--text-sub);
     }
 
     .form-row input:focus,
-    .form-row textarea:focus {
+    .form-row textarea:focus,
+    .form-row select:focus {
       outline: none;
       border-color: var(--green-mid);
       box-shadow: 0 0 0 3px var(--gold-dim);
@@ -970,6 +985,17 @@
         <div class="form-row">
           <label for="f-name">お名前<span class="form-required">必須</span></label>
           <input type="text" id="f-name" name="name" required autocomplete="name" placeholder="山田 太郎">
+          <p class="form-note">複数名でご参加の場合は、お手数ですがお一人ずつお申し込みください。</p>
+        </div>
+
+        <div class="form-row">
+          <label for="f-role">役職<span class="form-required">必須</span></label>
+          <select id="f-role" name="role" required>
+            <option value="" disabled selected>選択してください</option>
+            <option value="経営者">経営者</option>
+            <option value="部長・課長">部長・課長</option>
+            <option value="その他">その他</option>
+          </select>
         </div>
 
         <div class="form-row">
@@ -1084,6 +1110,7 @@ applyForm.addEventListener('submit', async (event) => {
   const data = {
     company: applyForm.company.value.trim(),
     name: applyForm.name.value.trim(),
+    role: applyForm.role.value,
     email: applyForm.email.value.trim(),
     tel: applyForm.tel.value.trim(),
     party: party ? party.value : '',
@@ -1095,8 +1122,8 @@ applyForm.addEventListener('submit', async (event) => {
     eventDetail: currentEvent.detail
   };
 
-  if (!data.company || !data.name || !data.email || !data.tel || !data.party) {
-    showApplyMessage('error', '必須項目（会社名・お名前・メールアドレス・電話番号・懇親会の参加）をご入力ください。');
+  if (!data.company || !data.name || !data.role || !data.email || !data.tel || !data.party) {
+    showApplyMessage('error', '必須項目（会社名・お名前・役職・メールアドレス・電話番号・懇親会の参加）をご入力ください。');
     return;
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
