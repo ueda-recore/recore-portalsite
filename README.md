@@ -53,7 +53,7 @@ RECOREコミュニティの全体ポータルサイトです。リユース業�
 
 - 送信先は Google Apps Script のWebアプリ（`APPLY_ENDPOINT` 定数で指定）
 - 申し込み内容はスプレッドシート「RECOREコミュニティ 参加申し込み」の `申し込み一覧` シートに追記される
-- 申込者へ自動返信メール、運営（seino@recore-corp.jp）へ通知メールを送信
+- 申込者へ自動返信メールを送信、運営へは Slack「recoreコミュニティ運営」チャンネルに通知（Slackが使えないときはメールにフォールバック）
 - GAS のソースは `~/gas-community-form`（clasp管理）
 
 **Event Reports セクション**
