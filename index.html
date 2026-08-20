@@ -531,6 +531,55 @@
       margin-top: 6px;
     }
 
+    .radio-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .radio-option {
+      flex: 1;
+      min-width: 140px;
+      position: relative;
+    }
+
+    .radio-option input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .radio-option span {
+      display: block;
+      padding: 13px 16px;
+      font-size: 15px;
+      font-weight: 500;
+      text-align: center;
+      color: var(--text-sub);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .radio-option span:hover {
+      border-color: var(--green-mid);
+      color: var(--text);
+    }
+
+    .radio-option input:checked + span {
+      background: var(--green-dark);
+      border-color: var(--green-dark);
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .radio-option input:focus-visible + span {
+      box-shadow: 0 0 0 3px var(--gold-dim);
+    }
+
     .form-submit {
       text-align: center;
       margin-top: 32px;
@@ -1146,6 +1195,25 @@
         </div>
 
         <div class="form-row">
+          <label>懇親会の参加<span class="form-required">必須</span></label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="party" value="参加する">
+              <span>参加する</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="party" value="参加しない">
+              <span>参加しない</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="party" value="未定">
+              <span>未定</span>
+            </label>
+          </div>
+          <p class="form-note">見学会終了後の懇親会です。会場・会費は日程確定後にご案内します。</p>
+        </div>
+
+        <div class="form-row">
           <label for="f-message">ご質問・ご要望<span class="form-optional">任意</span></label>
           <textarea id="f-message" name="message" placeholder="見学で特に見たい工程、当日の交通手段のご相談など、ご自由にご記入ください。"></textarea>
         </div>
@@ -1247,17 +1315,20 @@ function showApplyMessage(type, html) {
 applyForm.addEventListener('submit', async (event) => {
   event.preventDefault();
 
+  const party = applyForm.querySelector('input[name="party"]:checked');
+
   const data = {
     company: applyForm.company.value.trim(),
     name: applyForm.name.value.trim(),
     email: applyForm.email.value.trim(),
     tel: applyForm.tel.value.trim(),
+    party: party ? party.value : '',
     message: applyForm.message.value.trim(),
     event: '関東コミュニティ第4回イベント（ブックオフ出品倉庫 見学会）'
   };
 
-  if (!data.company || !data.name || !data.email || !data.tel) {
-    showApplyMessage('error', '必須項目（会社名・お名前・メールアドレス・電話番号）をご入力ください。');
+  if (!data.company || !data.name || !data.email || !data.tel || !data.party) {
+    showApplyMessage('error', '必須項目（会社名・お名前・メールアドレス・電話番号・懇親会の参加）をご入力ください。');
     return;
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
